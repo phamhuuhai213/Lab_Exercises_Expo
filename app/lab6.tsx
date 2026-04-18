@@ -1,13 +1,8 @@
-import { View, Text, StyleSheet, Pressable, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-
-const QUESTIONS = [
-  { q: "React Native dùng để lập trình app đa nền tảng cho cả iOS và Android?", a: true },
-  { q: "Con nhện có 6 cái chân?", a: false },
-  { q: "Mặt trời mọc ở hướng Đông?", a: true },
-  { q: "Expo giúp việc khởi tạo dự án React Native dễ dàng hơn?", a: true },
-];
+import { QUESTIONS } from '../data/quizzler';
+import QuizButton from '../components/QuizButton';
 
 export default function Lab6() {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -32,13 +27,8 @@ export default function Lab6() {
         <Text style={styles.questionText}>{QUESTIONS[questionIndex].q}</Text>
       </View>
       
-      <Pressable style={[styles.button, { backgroundColor: '#4CAF50' }]} onPress={() => checkAnswer(true)}>
-        <Text style={styles.buttonText}>ĐÚNG</Text>
-      </Pressable>
-      
-      <Pressable style={[styles.button, { backgroundColor: '#F44336', marginBottom: 20 }]} onPress={() => checkAnswer(false)}>
-        <Text style={styles.buttonText}>SAI</Text>
-      </Pressable>
+      <QuizButton title="ĐÚNG" color="#4CAF50" onPress={() => checkAnswer(true)} />
+      <QuizButton title="SAI" color="#F44336" onPress={() => checkAnswer(false)} />
       
       <View style={styles.scoreRow}>
         {scoreKeeper.map((isCorrect, index) => (
@@ -71,18 +61,6 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     lineHeight: 35,
-  },
-  button: {
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 10,
-    borderRadius: 8,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
   },
   scoreRow: {
     flexDirection: 'row',
