@@ -1,12 +1,12 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 export default function Lab1() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>I Am Rich</Text>
-      <Image 
-        source={{ uri: 'https://cdn-icons-png.flaticon.com/512/2765/2765401.png' }} 
-        style={styles.image} 
+      <Image
+        source={require('../data/kim-cương.webp')}
+        style={styles.image}
       />
     </View>
   );
@@ -15,13 +15,13 @@ export default function Lab1() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A0A0A',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
     fontSize: 40,
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
     marginBottom: 40,
   },
